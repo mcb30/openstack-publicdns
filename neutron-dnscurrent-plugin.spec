@@ -9,7 +9,7 @@
 %endif
 
 Name:		python-%{pkgname}
-Version:	0.0.1
+Version:	0.0.2
 Release:	1%{?dist}
 Summary:	Use dns_current_name as machine hostname
 License:	GPLv2+
@@ -98,5 +98,8 @@ used as the DHCP hostname.
 %endif
 
 %changelog
+* Mon Jul 29 2019 Michael Brown <mbrown@fensystems.co.uk> 0.0.2-1
+- Switched to setuptools and added RPM spec file
+
 * Mon Jul 29 2019 Michael Brown <mbrown@fensystems.co.uk> - 0.0.1-1
 - Initial package
