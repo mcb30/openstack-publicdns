@@ -13,7 +13,7 @@ setup(
     author_email="sysadmins@unipart.io",
     url="https://github.com/unipartdigital/openstack_publicdns",
     license="Apache",
-    version="0.0.2",
+    version="0.0.3",
     classifiers=[
         "Environment :: OpenStack",
         "Intended Audience :: Information Technology",
