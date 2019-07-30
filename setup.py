@@ -2,16 +2,16 @@
 
 """Setup script"""
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
-    name="openstack_publicdns",
+    name="openstack-publicdns",
     description="OpenStack public DNS plugins",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author="Unipart Digital",
     author_email="sysadmins@unipart.io",
-    url="https://github.com/unipartdigital/openstack_publicdns",
+    url="https://github.com/unipartdigital/openstack-publicdns",
     license="Apache",
     version="0.0.3",
     classifiers=[
@@ -27,9 +27,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
-    packages=[
-        'openstack_publicdns',
-    ],
+    packages=find_packages(),
     install_requires=[
         'neutron',
     ],

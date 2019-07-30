@@ -12,7 +12,7 @@ Version:	0.0.3
 Release:	1%{?dist}
 Summary:	OpenStack public DNS plugins
 License:	GPLv2+
-URL:		https://github.com/unipartdigital/openstack_publicdns
+URL:		https://github.com/unipartdigital/openstack-publicdns
 Source0:	%{name}-%{version}.tar.gz
 BuildArch:	noarch
 %if 0%{?with_py2}
