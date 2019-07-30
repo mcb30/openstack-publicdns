@@ -14,6 +14,7 @@
 #    under the License.
 
 from oslo_log import log as logging
+from neutron.agent.linux import dhcp
 from neutron.plugins.ml2.extensions import dns_integration as dns
 
 LOG = logging.getLogger(__name__)
@@ -44,3 +45,24 @@ class PublicDNSExtensionDriver(dns.DNSDomainPortsExtensionDriver):
                 dns_name = dns_data_db.current_dns_name
                 dns_domain = dns_data_db.current_dns_domain
         return dns_name, dns_domain
+
+
+class Dnsmasq(dhcp.Dnsmasq):
+    """Public DNS DHCP agent
+
+    The upstream DHCP agent starts `dnsmasq` with a `--domain` option
+    using the `dns_domain` from `neutron.conf` rather than from the
+    network's `dns_domain`.
+
+    This extension modifies this behaviour so that the `--domain`
+    option uses the network's `dns_domain`.
+    """
+
+    def _build_cmdline_callback(self, pid_file):
+        cmd = super(Dnsmasq, self)._build_cmdline_callback(pid_file)
+        if hasattr(self.network, 'dns_domain') and self.network.dns_domain:
+            LOG.debug("Setting dnsmasq domain \"%s\" for network %s",
+                      self.network.dns_domain, self.network.id)
+            cmd = [x for x in cmd if not x.startswith('--domain=')]
+            cmd.append('--domain=%s' % self.network.dns_domain)
+        return cmd
