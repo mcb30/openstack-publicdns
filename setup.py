@@ -5,13 +5,13 @@
 from setuptools import setup
 
 setup(
-    name="neutron-dnscurrent-plugin",
-    description="Use dns_current_name as machine hostname",
+    name="openstack_publicdns",
+    description="OpenStack public DNS plugins",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     author="Unipart Digital",
     author_email="sysadmins@unipart.io",
-    url="https://github.com/unipartdigital/neutron-dnscurrent-plugin",
+    url="https://github.com/unipartdigital/openstack_publicdns",
     license="Apache",
     version="0.0.2",
     classifiers=[
@@ -28,14 +28,14 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
     packages=[
-        'neutron_dnscurrent',
+        'openstack_publicdns',
     ],
     install_requires=[
         'neutron',
     ],
     entry_points={
         'neutron.ml2.extension_drivers': [
-            'dnscurrent=neutron_dnscurrent:DNSCurrentExtensionDriver',
+            'publicdns=openstack_publicdns:PublicDNSExtensionDriver',
         ],
     },
 )

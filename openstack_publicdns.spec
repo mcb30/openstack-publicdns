@@ -1,5 +1,4 @@
-%global pkgname neutron_dnscurrent
-%global eggname neutron_dnscurrent_plugin
+%global srcname openstack_publicdns
 
 %define with_py2 1
 %define with_py3 1
@@ -8,12 +7,12 @@
 %define with_py3 0
 %endif
 
-Name:		python-%{pkgname}
+Name:		python-%{srcname}
 Version:	0.0.2
 Release:	1%{?dist}
-Summary:	Use dns_current_name as machine hostname
+Summary:	OpenStack public DNS plugins
 License:	GPLv2+
-URL:		https://github.com/unipartdigital/neutron-dnscurrent-plugin
+URL:		https://github.com/unipartdigital/openstack_publicdns
 Source0:	%{name}-%{version}.tar.gz
 BuildArch:	noarch
 %if 0%{?with_py2}
@@ -26,11 +25,11 @@ BuildRequires:	python3-setuptools
 %endif
 
 %description
-OpenStack Neutron plugin to allow machine's external DNS name to be
-used as the DHCP hostname.
+OpenStack plugins to simplify the use of public DNS names for virtual
+machine instances.
 
 %if 0%{?with_py2}
-%package -n	python2-%{pkgname}
+%package -n	python2-%{srcname}
 Summary:	%{summary}
 %if 0%{?rhel}
 Requires:	python-neutron
@@ -39,27 +38,27 @@ Requires:	python2-neutron
 %endif
 Requires:	python2-setuptools
 %if ! 0%{?with_py3}
-Provides:	%{pkgname} = %{version}-%{release}
+Provides:	%{srcname} = %{version}-%{release}
 %endif
 
-%{?python_provide:%python_provide python2-%{pkgname}}
+%{?python_provide:%python_provide python2-%{srcname}}
 
-%description -n python2-%{pkgname}
-OpenStack Neutron plugin to allow machine's external DNS name to be
-used as the DHCP hostname.
+%description -n python2-%{srcname}
+OpenStack plugins to simplify the use of public DNS names for virtual
+machine instances.
 %endif
 
 %if 0%{?with_py3}
-%package -n	python3-%{pkgname}
+%package -n	python3-%{srcname}
 Summary:	%{summary}
 Requires:	python3-neutron
-Provides:	%{pkgname} = %{version}-%{release}
+Provides:	%{srcname} = %{version}-%{release}
 
-%{?python_provide:%python_provide python3-%{pkgname}}
+%{?python_provide:%python_provide python3-%{srcname}}
 
-%description -n python3-%{pkgname}
-OpenStack Neutron plugin to allow machine's external DNS name to be
-used as the DHCP hostname.
+%description -n python3-%{srcname}
+OpenStack plugins to simplify the use of public DNS names for virtual
+machine instances.
 %endif
 
 %prep
@@ -82,19 +81,19 @@ used as the DHCP hostname.
 %endif
 
 %if 0%{?with_py2}
-%files -n python2-%{pkgname}
+%files -n python2-%{srcname}
 %doc README.md
 %license COPYING
-%{python2_sitelib}/%{pkgname}/
-%{python2_sitelib}/%{eggname}-%{version}-*.egg-info/
+%{python2_sitelib}/%{srcname}/
+%{python2_sitelib}/%{srcname}-%{version}-*.egg-info/
 %endif
 
 %if 0%{?with_py3}
-%files -n python3-%{pkgname}
+%files -n python3-%{srcname}
 %doc README.md
 %license COPYING
-%{python3_sitelib}/%{pkgname}/
-%{python3_sitelib}/%{eggname}-%{version}-*.egg-info/
+%{python3_sitelib}/%{srcname}/
+%{python3_sitelib}/%{srcname}-%{version}-*.egg-info/
 %endif
 
 %changelog

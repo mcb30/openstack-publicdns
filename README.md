@@ -1,20 +1,15 @@
-OpenStack DNS hostnames
-=======================
+OpenStack public DNS plugins
+============================
 
-The OpenStack networking service (Neutron) can be configured to
-automatically create DNS records for virtual machine instances.  For
-example: if an instance named `testvm` is launched in a network with
-the DNS domain `testnet.example.org` then the Neutron service can
-automatically create DNS A and AAAA records for
-`testvm.testnet.example.org`.
+This package provides a collection of plugins to simplify the use of
+public DNS names for OpenStack virtual machine instances.
 
-Different networks may have different DNS domains: records will be
-created as expected based on the per-network `dns_domain` attribute.
-However, the hostname provided to the instance via DHCP will ignore
-the per-network `dns_domain` attribute and will instead be constructed
-using the global `dns_domain` parameter in the `neutron.conf` file.
+Each OpenStack network can have a configured `dns_domain`.  Virtual
+machine instances launched within that network will have a hostname
+constructed from the network's `dns_domain`, and appropriate DNS
+records will be created automatically.
 
-This plugin works around this limitation in the Neutron service: it
-updates the DHCP configuration so that the hostname provided to the
-instance via DHCP will be constructed in the same way as the DNS
-record.
+For example: if an instance named `testvm` is launched in a network
+with the DNS domain `example.org` then the instance will be given the
+DHCP hostname `testvm.example.org` and the DNS A and AAAA records for
+`testvm.example.org` will be added to the DNS zone.

@@ -19,11 +19,11 @@ from neutron.plugins.ml2.extensions import dns_integration as dns
 LOG = logging.getLogger(__name__)
 
 
-class DNSCurrentExtensionDriver(dns.DNSDomainPortsExtensionDriver):
-    
+class PublicDNSExtensionDriver(dns.DNSDomainPortsExtensionDriver):
+
     def _get_request_dns_name_and_domain_name(self, dns_data_db):
         dns_name, dns_domain = (
-            super(DNSCurrentExtensionDriver,
+            super(PublicDNSExtensionDriver,
                   self)._get_request_dns_name_and_domain_name(dns_data_db))
         if dns_data_db:
             if dns_data_db.current_dns_name:
