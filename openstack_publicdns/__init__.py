@@ -20,6 +20,20 @@ LOG = logging.getLogger(__name__)
 
 
 class PublicDNSExtensionDriver(dns.DNSDomainPortsExtensionDriver):
+    """Public DNS extension driver
+
+    The upstream DNS extension driver constructs the DNS record names
+    (stored in the `portdnses` table) based on the network's
+    `dns_domain`, but does not propagate this information to the
+    port's own `dns_assignments`.  The upshot of this is that DNS
+    records are created as expected using the network's `dns_domain`,
+    but the DHCP hostsfile records are created using the `dns_domain`
+    from `neutron.conf` rather than the network's `dns_domain`.
+
+    This extension modifies this behaviour so that the port's
+    `dns_assignments` are also constructed using the network's
+    `dns_domain`.
+    """
 
     def _get_request_dns_name_and_domain_name(self, dns_data_db):
         dns_name, dns_domain = (
