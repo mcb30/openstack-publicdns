@@ -8,7 +8,7 @@
 %endif
 
 Name:		python-%{srcname}
-Version:	0.0.4
+Version:	0.0.5
 Release:	1%{?dist}
 Summary:	OpenStack public DNS plugins
 License:	GPLv2+
@@ -97,6 +97,9 @@ machine instances.
 %endif
 
 %changelog
+* Thu Aug 01 2019 Michael Brown <mbrown@fensystems.co.uk> 0.0.5-1
+- Bypass the external_dns_not_needed checks
+
 * Tue Jul 30 2019 Michael Brown <mbrown@fensystems.co.uk> 0.0.4-1
 - Add DHCP agent extension
 
