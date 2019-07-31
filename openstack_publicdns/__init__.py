@@ -46,6 +46,11 @@ class PublicDNSExtensionDriver(dns.DNSDomainPortsExtensionDriver):
                 dns_domain = dns_data_db.current_dns_domain
         return dns_name, dns_domain
 
+    def external_dns_not_needed(self, context, network):
+        # Bypass the usual checks and assume that all networks may
+        # require external DNS updates
+        return False
+
 
 class Dnsmasq(dhcp.Dnsmasq):
     """Public DNS DHCP agent
