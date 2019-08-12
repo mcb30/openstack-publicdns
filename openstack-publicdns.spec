@@ -8,7 +8,7 @@
 %endif
 
 Name:		python-%{srcname}
-Version:	0.0.5
+Version:	0.0.6
 Release:	1%{?dist}
 Summary:	OpenStack public DNS plugins
 License:	GPLv2+
@@ -97,6 +97,11 @@ machine instances.
 %endif
 
 %changelog
+* Mon Aug 12 2019 Michael Brown <mbrown@fensystems.co.uk> 0.0.6-1
+- Add installation and configuration instructions
+- Bypass the tenant_id filtering in Designate
+- Split out extensions to individual files
+
 * Thu Aug 01 2019 Michael Brown <mbrown@fensystems.co.uk> 0.0.5-1
 - Bypass the external_dns_not_needed checks
 
