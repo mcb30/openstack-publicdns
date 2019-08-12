@@ -29,11 +29,15 @@ setup(
     ],
     packages=find_packages(),
     install_requires=[
+        'designate',
         'neutron',
     ],
     entry_points={
         'neutron.ml2.extension_drivers': [
             'publicdns=openstack_publicdns.neutron.dns:PublicDNSExtensionDriver',
+        ],
+        'designate.storage': [
+            'publicdns=openstack_publicdns.designate.storage:PublicDNSStorage',
         ],
     },
 )
