@@ -33,7 +33,7 @@ setup(
     ],
     entry_points={
         'neutron.ml2.extension_drivers': [
-            'publicdns=openstack_publicdns:PublicDNSExtensionDriver',
+            'publicdns=openstack_publicdns.neutron.dns:PublicDNSExtensionDriver',
         ],
     },
 )
